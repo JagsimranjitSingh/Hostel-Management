@@ -14,7 +14,6 @@
             echo "<script>alert('Attendance Marked successfully');</script>";
         }
     }
-    
 ?>
 
 <!DOCTYPE html>
