@@ -80,8 +80,7 @@ check_login();
                     <div class="card">
                         <div class="card-body"
                             style="background:linear-gradient(to right,#8971ea,#7f72ea,#7574ea,#6a75e9,#5f76e8);">
-                            <h2 class="card-title text-center" style="color: white;"><?php echo $_SESSION['Hname'] ?>
-                            </h2>
+                            <h2 class="card-title text-center" style="color: white;"><?php echo $_SESSION['Hname'] ?></h2>
                         </div>
                     </div>
                 </div>
@@ -97,10 +96,8 @@ check_login();
                             <div class="card-body">
                                 <!-- collapsible title content -->
                                 <button type="button"
-                                    style="outline:none;background:linear-gradient(to right,#8971ea,#7f72ea,#7574ea,#6a75e9,#5f76e8);width: -webkit-fill-available;border: 0px;padding-top: 16px;"
-                                    class="collapsible">
-                                    <h4 class="card-title" style="color:white">Students IN OUT</h4><i
-                                        class="far fa-arrow-alt-circle-down" style="color:white"></i>
+                                    style="outline:none;background:linear-gradient(to right,#8971ea,#7f72ea,#7574ea,#6a75e9,#5f76e8);width: -webkit-fill-available;border: 0px;padding-top: 16px;" class="collapsible">
+                                    <h4 class="card-title" style="color:white">Students IN OUT</h4><i class="far fa-arrow-alt-circle-down" style="color:white"></i>
                                 </button>
                                 <div class="table-responsive content">
                                     <table class="table table-hover">
