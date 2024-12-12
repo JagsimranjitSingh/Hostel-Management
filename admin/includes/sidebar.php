@@ -11,9 +11,9 @@
                             
         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="attendence.php" aria-expanded="false"><i class="fas fa-calendar-check"></i><span class="hide-menu">Attendance</span></a></li>
 
-        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="register-student.php" aria-expanded="false"><i class="fasfa-user-plus"></i><span class="hide-menu">Register a Student</span></a></li>
+        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="register-student.php" aria-expanded="false"><i class="fas fa-user-plus"></i><span class="hide-menu">Register a Student</span></a></li>
 
-        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="view-students-acc.php" aria-expanded="false"><i class="fasfa-users"></i><span class="hide-menu">Hostel Students</span></a></li>
+        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="view-students-acc.php" aria-expanded="false"><i class="fas fa-users"></i><span class="hide-menu">Hostel Students</span></a></li>
 
         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="fee.php" aria-expanded="false"><i class="fas fa-dollar-sign"></i><span class="hide-menu">Students Fee</span></a></li>
 
