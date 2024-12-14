@@ -28,22 +28,32 @@
 </head>
 
 <body>
-    <!-- Preloader - style from spinners.css -->
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- Main wrapper - style from pages.scss -->
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
     <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
-        <!-- Topbar header - style from pages.scss -->
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
         <header class="topbar" data-navbarbg="skin6">
             <?php include 'includes/navigation.php'?>
         </header>
+        <!-- ============================================================== -->
         <!-- End Topbar header -->
-        <!-- Left Sidebar - style from sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
@@ -51,12 +61,20 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        <!-- End Left Sidebar - style from sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
         <!-- Page wrapper  -->
+        <!-- ============================================================== -->
         <div class="page-wrapper">
+            <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row">
+
+
                     <div class="col-7 align-self-center">
                     <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Full Details</h4>
                         <div class="d-flex align-items-center">
@@ -65,16 +83,28 @@
                             </nav> -->
                         </div>
                     </div>
+                    
                 </div>
             </div>
+            <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
             <div class="container-fluid">
+
                 <!--Table Column -->
+                
                 <div class="card">
-                <div class="card-body">
+                 
+                 <div class="card-body">
+                 
                     <div class="row">
-                        <div class="table-responsive">
+                    
+                    <div class="table-responsive">
                                   <table id="zctb" class="table table-striped table-bordered no-wrap">
+
                                       <tbody>
 
                                       <?php	
@@ -89,8 +119,11 @@
                                     while($row=$res->fetch_object())
                                     {
                                               ?>
+                                        
+
                                           <tr>
                                               <td colspan="3"><b>Date & Time of Registration: <?php echo $row->postingDate;?></b></td>
+                                              
                                           </tr>
 
                                           <tr>
@@ -102,6 +135,7 @@
                                           <td><?php echo $row->emailid;?></td>
                                           </tr>
 
+
                                           <tr>
                                           <td><b>Contact Number :</b></td>
                                           <td><?php echo $row->contactno;?></td>
@@ -110,6 +144,7 @@
                                           <td><b>Selected Course :</b></td>
                                           <td><?php echo $row->course;?></td>
                                           </tr>
+
 
                                           <tr>
                                           <td><b>Emergency Contact No. :</b></td>
@@ -132,15 +167,18 @@
                                           <?php echo $row->corresCIty;?>, <?php echo $row->corresPincode;?><br />
                                           <?php echo $row->corresState;?>
 
+
                                           </td>
                                           <td><b>Permanent Address:</b></td>
                                           <td colspan="2">
                                           <?php echo $row->pmntAddress;?><br />
                                           <?php echo $row->pmntCity;?>, <?php echo $row->pmntPincode;?><br />	
+
                                           </td>
                                           </tr>
 
                                           <tr>
+
                                           <td><b>Room no :</b></td>
                                           <td><?php echo $row->roomno;?></td>
 
@@ -150,9 +188,11 @@
                                           <td><b>Seater :</b></td>
                                           <td><?php echo $row->seater;?></td>
 
+
                                           </tr>
 
                                           <tr>
+
                                           <td><b>Duration:</b></td>
                                           <td><?php echo $dr=$row->duration;?> Months</td>
 
@@ -164,8 +204,11 @@
                                           echo "Required";
                                           }
                                           ;?> </td>
+
                                           <td><b>Fees Per Month :</b></td>
                                           <td>$<?php echo $fpm=$row->feespm;?></td>
+
+                                          
 
                                           </tr>
 
@@ -180,32 +223,55 @@
                                           ?></b></td>
                                           </tr>
 
+
+                                          
+
+
                                           <?php } ?>
 
                                       </tbody>
                                   </table>
                                  
                               </div>
+                    
+                    
                     </div>
+                 
+                 
                  </div>
+               
                
                </div>
 
               <!-- Table column end -->
 
-            </div>            
-            
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
             <!-- footer -->
+            <!-- ============================================================== -->
             <?php include '../includes/footer.php' ?>
-            
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
         </div>
+        <!-- ============================================================== -->
         <!-- End Page wrapper  -->
-    </div>    
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
     <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
     <!-- All Jquery -->
+    <!-- ============================================================== -->
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
     <!-- apps -->
     <script src="../dist/js/app-style-switcher.js"></script>
     <script src="../dist/js/feather.min.js"></script>

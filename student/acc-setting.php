@@ -1,20 +1,26 @@
 <?php
-session_start();
-include('../includes/dbconn.php');
-include('../includes/check-login.php');
-check_login();
-if (isset($_POST['submit'])) {
-    $date = $_POST['date'];
-    $status = "Not Received";
-    $type = $_POST['type'];
-    $cms = $_POST['cms'];
-    $sql = mysqli_query($mysqli, "INSERT INTO parcel(pdate, pstatus, ptype, cms) VALUES('$date', '$status', '$type', $cms)");
-    if ($sql) {
-        echo "<script>alert('Parcel added successfully');</script>";
-    } else {
-        echo "<script>alert('Something went wrong. Please try again');</script>";
+    session_start();
+    include('../includes/dbconn.php');
+    date_default_timezone_set('America/Chicago');
+    include('../includes/check-login.php');
+    check_login();
+    $cms=$_SESSION['cms'];
+    // code for change password
+    if(isset($_POST['changepwd'])){
+        $op=$_POST['oldpassword'];
+        $op=md5($op);
+        $np=$_POST['newpassword'];
+        $np=md5($np);
+        $sql="SELECT password FROM studentlogin where cms=$cms";
+        $row = $mysqli->query($sql);
+        if(mysqli_fetch_array($row)['password'] == $op){
+            mysqli_query($mysqli, "Call changepwd('$cms','$np')");
+            $_SESSION['msg']="Password has been updated !!";
+        } else {
+            $_SESSION['msg']="Old Password does not match !!";
+        }	
+
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -33,14 +39,23 @@ if (isset($_POST['submit'])) {
     <!-- Custom CSS -->
     <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <!-- This page plugin CSS -->
-    <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
 
+    <script type="text/javascript">
+    function valid(){
+    if(document.changepwd.newpassword.value!= document.changepwd.cpassword.value){
+        alert("New Password and Confirmation Password does not match");
+        document.changepwd.cpassword.focus();
+        return false;
+     }
+        return true;
+    }
+    </script>
+    
 </head>
 
-<body>
+<body style="font-family: Raleway;">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -59,9 +74,9 @@ if (isset($_POST['submit'])) {
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <header class="topbar" data-navbarbg="skin6">
-            <?php include 'includes/navigation.php' ?>
+            <?php include '../includes/student-navigation.php'?>
         </header>
-        <!-- ============================================================== -->
+                <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
@@ -70,7 +85,7 @@ if (isset($_POST['submit'])) {
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
-                <?php include 'includes/sidebar.php' ?>
+                <?php include '../includes/student-sidebar.php'?>
             </div>
             <!-- End Sidebar scroll-->
         </aside>
@@ -81,86 +96,80 @@ if (isset($_POST['submit'])) {
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-7 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Parcel Management</h4>
-                        <div class="d-flex align-items-center">
-                            <!-- <nav aria-label="breadcrumb">
-                                
-                            </nav> -->
-
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+            
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
+                
+                <div class="col-7 align-self-center">
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Account Settings - Change Password</h4>
+                </div>
 
-                <!-- Table Starts -->
-                <form method="POST">
+                
+                <?php if(isset($_POST['changepwd'])){ ?>
+                        <div class="alert alert-primary alert-dismissible bg-primary text-white border-0 fade show"
+                                    role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <strong>Info: </strong> <?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg']=""); ?>
+                        </div> <?php } ?>
 
-
+                <form method="POST" name="changepwd" id="change-pwd" onSubmit="return valid();">
                     <div class="row">
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">CMS</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="cms" id="stayf" class="form-control" required>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Current Password</h4>
+                                            <div class="form-group">
+                                                <input type="password" name="oldpassword" id="oldpassword" value="" class="form-control" onBlur="checkpass()" required="required">
+                                                <span id="password-availability-status" class="help-block m-b-none" style="font-size:12px;"></span>
+                                            </div>
+                                        
                                     </div>
-
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Type</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="type" id="stayf" class="form-control" required>
-                                    </div>
 
+
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">New Password</h4>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" name="newpassword" id="newpassword" value="" required="required">
+                                            </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Date</h4>
-                                    <div class="form-group">
-                                        <input type="date" name="date" id="stayf" class="form-control" required>
-                                    </div>
 
+
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Confirm Password<h4>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" value="" required="required" id="cpassword" name="cpassword">
+                                            </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-
+                    
+                    
                     </div>
+
+                    
                     <div class="form-actions">
-                        <div class="text-center">
-                            <button type="submit" name="submit" class="btn btn-success">Generate</button>
-                        </div>
+                                <div class="text-center">
+                                    <button type="submit" name="changepwd" class="btn btn-success">Submit</button>
+                                    <button type="reset" class="btn btn-dark">Reset</button>
+                                    </div>
+                            </div>
 
-                        <!-- Table to show that student in out activity -->
-                        <!-- buttons in front of each row to delete the record -->
-
-
-
-                    </div>
                 </form>
+
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -201,9 +210,14 @@ if (isset($_POST['submit'])) {
     <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
-    <script src="../assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../dist/js/pages/datatable/datatable-basic.init.js"></script>
 
+    <!-- customs -->
+    <script>
+    function checkpass() {
+        $("#loaderIcon").show();
+        
+    }
+    </script>
 </body>
 
 </html>

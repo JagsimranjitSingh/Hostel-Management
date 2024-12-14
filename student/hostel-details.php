@@ -1,25 +1,13 @@
 <?php
-session_start();
-include('../includes/dbconn.php');
-include('../includes/check-login.php');
-check_login();
-if (isset($_POST['submit'])) {
-    $date = $_POST['date'];
-    $status = "Not Received";
-    $type = $_POST['type'];
-    $cms = $_POST['cms'];
-    $sql = mysqli_query($mysqli, "INSERT INTO parcel(pdate, pstatus, ptype, cms) VALUES('$date', '$status', '$type', $cms)");
-    if ($sql) {
-        echo "<script>alert('Parcel added successfully');</script>";
-    } else {
-        echo "<script>alert('Something went wrong. Please try again');</script>";
-    }
-}
+    session_start();
+    include('../includes/dbconn.php');
+    include('../includes/check-login.php');
+    check_login();
 ?>
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
+ 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,14 +21,12 @@ if (isset($_POST['submit'])) {
     <!-- Custom CSS -->
     <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <!-- This page plugin CSS -->
-    <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
-
+    
 </head>
 
-<body>
+<body style="font-family: Raleway;">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -59,7 +45,7 @@ if (isset($_POST['submit'])) {
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <header class="topbar" data-navbarbg="skin6">
-            <?php include 'includes/navigation.php' ?>
+             <?php include '../includes/student-navigation.php'?>
         </header>
         <!-- ============================================================== -->
         <!-- End Topbar header -->
@@ -70,7 +56,7 @@ if (isset($_POST['submit'])) {
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
-                <?php include 'includes/sidebar.php' ?>
+                <?php include '../includes/student-sidebar.php'?>
             </div>
             <!-- End Sidebar scroll-->
         </aside>
@@ -81,87 +67,112 @@ if (isset($_POST['submit'])) {
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-7 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Parcel Management</h4>
-                        <div class="d-flex align-items-center">
-                            <!-- <nav aria-label="breadcrumb">
-                                
-                            </nav> -->
-
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+            
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
+                
+                <div class="col-7 align-self-center">
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">My Hostel Details</h4>
+                </div>
 
-                <!-- Table Starts -->
-                <form method="POST">
 
 
-                    <div class="row">
+                <!--Table Column -->
+                
+                 <div class="card">
+                 
+                   <div class="card-body">
+                   
+                      <div class="row">
+                      
+                      <div class="table-responsive">
+                                    <table id="zctb" class="table table-striped table-bordered no-wrap">
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">CMS</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="cms" id="stayf" class="form-control" required>
-                                    </div>
+                                        <tbody>
 
+                                        <?php	
+                                        $cms=$_SESSION['cms'];
+                                        $ret="Call StudentDetails('$cms')";
+                                        $res=$mysqli->query($ret);
+                                        $cnt = 1;
+                                        while($row=$res->fetch_object())
+                                            {
+                                                // $hostel = mysqli_query($mysqli, "SELECT HName from hostel where HID=$row->SHID")->fetch_object()->HName;
+                                                // $roomtype = mysqli_query($mysqli, "SELECT RCapacity from room where RNo=$row->SRNo and RHID=$row->SHID")->fetch_object()->RCapacity;
+                                                ?>
+
+                                            <tr>
+                                            
+                                            <td><b>Hostel Name :</b></td>
+                                            <td><?php echo $row->HName;?></td>
+                                            <td><b>Room no :</b></td>
+                                            <td><?php echo $row->SRNo;?></td>
+                                            <td><b>Room Type :</b></td>
+                                            <td><?php 
+                                                if($row->RCapacity == 2)
+                                                    echo "Biseater";
+                                                else if($row->RCapacity == 3)
+                                                    echo "Triseater";
+                                                
+                                            ?></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><b>Full Name :</b></td>
+                                                <td><?php echo $row->SName ?></td>
+                                                <td><b>Guardian Name :</b></td>
+                                                <td><?php echo $row->S_FName;?></td>
+                                            <td><b>Registration Number :</b></td>
+                                            <td><?php echo $row->CMS;?></td>
+                                    
+                                            </tr>
+
+                                            <tr>
+                                            <td><b>Email Address:</b></td>
+                                            <td><?php echo $row->SEmail;?></td>
+                                            <td><b>Department</b></td>
+                                            <td><?php echo $row->Dept;?></td>
+                                            <td><b>Contact Number :</b></td>
+                                            <td><?php echo $row->SPhone;?></td>
+                                            </tr>
+
+                                            <tr>
+                                            <td><b>CNIC :</b></td>
+                                            <td><?php echo $row->SCnic;?></td>
+                                            <td><b>Gender :</b></td>
+                                            <td><?php echo $row->SGender;?></td>
+                                            <td><b>Current Address:</b></td>
+                                            <td colspan="2">
+                                            <?php echo $row->SAddress;?></td>
+                                            </tr>
+
+                                           
+                                            
+
+
+                                            <?php
+                                            $cnt=$cnt+1;
+                                            } ?>
+
+                                        </tbody>
+                                    </table>
+                                   
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Type</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="type" id="stayf" class="form-control" required>
-                                    </div>
+                      
+                      
+                      </div>
+                   
+                   
+                   </div>
+                 
+                 
+                 </div>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Date</h4>
-                                    <div class="form-group">
-                                        <input type="date" name="date" id="stayf" class="form-control" required>
-                                    </div>
+                <!-- Table column end -->
 
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="form-actions">
-                        <div class="text-center">
-                            <button type="submit" name="submit" class="btn btn-success">Generate</button>
-                        </div>
-
-                        <!-- Table to show that student in out activity -->
-                        <!-- buttons in front of each row to delete the record -->
-
-
-
-                    </div>
-                </form>
-            </div>
+            </div> 
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -201,9 +212,6 @@ if (isset($_POST['submit'])) {
     <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
-    <script src="../assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../dist/js/pages/datatable/datatable-basic.init.js"></script>
-
 </body>
 
 </html>

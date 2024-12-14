@@ -1,25 +1,20 @@
+<!-- Student in out form -->
 <?php
-session_start();
-include('../includes/dbconn.php');
-include('../includes/check-login.php');
-check_login();
-if (isset($_POST['submit'])) {
-    $date = $_POST['date'];
-    $status = "Not Received";
-    $type = $_POST['type'];
-    $cms = $_POST['cms'];
-    $sql = mysqli_query($mysqli, "INSERT INTO parcel(pdate, pstatus, ptype, cms) VALUES('$date', '$status', '$type', $cms)");
-    if ($sql) {
-        echo "<script>alert('Parcel added successfully');</script>";
-    } else {
-        echo "<script>alert('Something went wrong. Please try again');</script>";
-    }
-}
+    session_start();
+    include('../includes/dbconn.php');
+    include('../includes/check-login.php');
+    check_login();
+    $cms = $_SESSION['cms'];
+    $ret=mysqli_query($mysqli,"select * from student where cms='$cms'");
+    $row=mysqli_fetch_array($ret);
+    $name = $row['SName'];
+    $room = $row['SRNo'];
+    
 ?>
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
+ 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,14 +28,16 @@ if (isset($_POST['submit'])) {
     <!-- Custom CSS -->
     <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <!-- This page plugin CSS -->
-    <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
 
+    <script>
+        
+    </script>
+     
 </head>
 
-<body>
+<body style="font-family: Raleway;">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -59,7 +56,7 @@ if (isset($_POST['submit'])) {
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <header class="topbar" data-navbarbg="skin6">
-            <?php include 'includes/navigation.php' ?>
+            <?php include '../includes/student-navigation.php'?>
         </header>
         <!-- ============================================================== -->
         <!-- End Topbar header -->
@@ -70,7 +67,7 @@ if (isset($_POST['submit'])) {
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
-                <?php include 'includes/sidebar.php' ?>
+                <?php include '../includes/student-sidebar.php'?>
             </div>
             <!-- End Sidebar scroll-->
         </aside>
@@ -81,87 +78,49 @@ if (isset($_POST['submit'])) {
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-7 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Parcel Management</h4>
-                        <div class="d-flex align-items-center">
-                            <!-- <nav aria-label="breadcrumb">
-                                
-                            </nav> -->
-
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+            
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-
-                <!-- Table Starts -->
-                <form method="POST">
-
-
-                    <div class="row">
-
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">CMS</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="cms" id="stayf" class="form-control" required>
-                                    </div>
-
-                                </div>
+                
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Parcels Management</h4>
+                            <div class="table-responsive">
+                                <table id="zero_config" class="table table-striped table-bordered no-wrap">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Date</th>
+                                            <th>Type</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        
+                                            $sql = "SELECT * FROM parcel WHERE cms = '$cms'";
+                                            
+                                            $result = mysqli_query($mysqli, $sql);
+                                            $row = mysqli_num_rows($result);
+                                            if($row > 0){
+                                                while($row = mysqli_fetch_array($result)){
+                                                    echo "<tr><td>".$row['ID']."</td><td>".$row['PDate']."</td><td>".$row['PType']."</td><td>".$row['PStatus']."</td></tr>";
+                                                }
+                                            }
+                                        ?>
+    
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Type</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="type" id="stayf" class="form-control" required>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Date</h4>
-                                    <div class="form-group">
-                                        <input type="date" name="date" id="stayf" class="form-control" required>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
                     </div>
-                    <div class="form-actions">
-                        <div class="text-center">
-                            <button type="submit" name="submit" class="btn btn-success">Generate</button>
-                        </div>
-
-                        <!-- Table to show that student in out activity -->
-                        <!-- buttons in front of each row to delete the record -->
-
-
-
-                    </div>
-                </form>
+                </div>
+                  
             </div>
+        </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -201,9 +160,9 @@ if (isset($_POST['submit'])) {
     <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
-    <script src="../assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../dist/js/pages/datatable/datatable-basic.init.js"></script>
+
 
 </body>
+
 
 </html>

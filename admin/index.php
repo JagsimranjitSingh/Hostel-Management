@@ -1,23 +1,23 @@
 <?php
     session_start();
     include('../includes/dbconn.php');
-    if (isset($_POST['login'])) {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $password = md5($password);
-        $query = mysqli_query($mysqli, "SELECT * FROM adminlogin WHERE username='$email' and password='$password' ");
-        $num = mysqli_fetch_array($query);
-        if ($num > 0) {
-            // redirect to that student page
-            $_SESSION['login'] = $email;
-            // get cms using query
-            $_SESSION['mid'] = $num['MID'];
-            header("location: dashboard.php");
-        }
-        else{
-            echo "<script>alert('Invalid Details');</script>";
-        }
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $password = md5($password);
+    $query = mysqli_query($mysqli, "SELECT * FROM adminlogin WHERE username='$email' and password='$password' ");
+    $num = mysqli_fetch_array($query);
+    if ($num > 0) {
+        // redirect to that student page
+        $_SESSION['login'] = $email;
+        // get cms using query
+        $_SESSION['mid'] = $num['MID'];
+        header("location: dashboard.php");
     }
+    else{
+        echo "<script>alert('Invalid Details');</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +35,7 @@
     <title>Hostel Management System</title>
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
+
     <script type="text/javascript">
     function valid() {
     if(document.registration.password.value!= document.registration.cpassword.value){
@@ -45,18 +46,27 @@
     return true;
         }
     </script>
+
 </head>
 
 <body style="font-family: Raleway;">
     <div class="main-wrapper">
+        <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
         <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
                 <div class="lds-pos"></div>
             </div>
         </div>
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
         <!-- Login box.scss -->
+        <!-- ============================================================== -->
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative"
             style="background:url(../assets/images/big/auth-bg.jpg) no-repeat center center;">
             <div class="auth-box row">
@@ -97,14 +107,20 @@
                 </div>
             </div>
         </div>
+        <!-- ============================================================== -->
         <!-- Login box.scss -->
+        <!-- ============================================================== -->
     </div>
+    <!-- ============================================================== -->
     <!-- All Required js -->
+    <!-- ============================================================== -->
     <script src="../assets/libs/jquery/dist/jquery.min.js "></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js "></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+    <!-- ============================================================== -->
     <!-- This page plugin js -->
+    <!-- ============================================================== -->
     <script>
         $(".preloader ").fadeOut();
     </script>

@@ -12,6 +12,7 @@ check_login();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -37,22 +38,32 @@ check_login();
 </head>
 
 <body style="font-family: Raleway;">
-    <!-- Preloader - style from spinners.css -->
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- Main wrapper - style from pages.scss -->
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
     <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
-        <!-- Topbar header - style from pages.scss -->
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
         <header class="topbar" data-navbarbg="skin6">
             <?php include 'includes/navigation.php' ?>
         </header>
+        <!-- ============================================================== -->
         <!-- End Topbar header -->
-        <!-- Left Sidebar - style from sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
@@ -60,18 +71,28 @@ check_login();
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        <!-- End Left Sidebar - style from sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
         <!-- Page wrapper  -->
+        <!-- ============================================================== -->
         <div class="page-wrapper">
+            <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
                         <?php include 'includes/greetings-a.php' ?>
                         <div class="d-flex align-items-center">
-                            <!-- <nav aria-label="breadcrumb"></nav> -->
+                            <!-- <nav aria-label="breadcrumb">
+                                
+                            </nav> -->
                         </div>
+
                     </div>
+
                 </div>
             </div>
             <hr>
@@ -80,15 +101,23 @@ check_login();
                     <div class="card">
                         <div class="card-body"
                             style="background:linear-gradient(to right,#8971ea,#7f72ea,#7574ea,#6a75e9,#5f76e8);">
-                            <h2 class="card-title text-center" style="color: white;"><?php echo $_SESSION['Hname'] ?></h2>
+                            <h2 class="card-title text-center" style="color: white;"><?php echo $_SESSION['Hname'] ?>
+                            </h2>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
             <div class="container-fluid">
-                
+                <!-- *************************************************************** -->
                 <!-- Start First Cards -->
+                <!-- ************************************************************** -->
+
                 <!-- INout -->
                 <div class="row">
                     <div class="col-md-12">
@@ -96,8 +125,10 @@ check_login();
                             <div class="card-body">
                                 <!-- collapsible title content -->
                                 <button type="button"
-                                    style="outline:none;background:linear-gradient(to right,#8971ea,#7f72ea,#7574ea,#6a75e9,#5f76e8);width: -webkit-fill-available;border: 0px;padding-top: 16px;" class="collapsible">
-                                    <h4 class="card-title" style="color:white">Students IN OUT</h4><i class="far fa-arrow-alt-circle-down" style="color:white"></i>
+                                    style="outline:none;background:linear-gradient(to right,#8971ea,#7f72ea,#7574ea,#6a75e9,#5f76e8);width: -webkit-fill-available;border: 0px;padding-top: 16px;"
+                                    class="collapsible">
+                                    <h4 class="card-title" style="color:white">Students IN OUT</h4><i
+                                        class="far fa-arrow-alt-circle-down" style="color:white"></i>
                                 </button>
                                 <div class="table-responsive content">
                                     <table class="table table-hover">
@@ -137,6 +168,7 @@ check_login();
                             </div>
                         </div>
                     </div>
+
                     <!-- Messoff -->
                     <div class="col-md-12">
                         <div class="card">
@@ -183,6 +215,7 @@ check_login();
                             </div>
                         </div>
                     </div>
+
                     <!-- Complaints -->
                     <div class="col-md-12">
                         <div class="card">
@@ -227,6 +260,7 @@ check_login();
                             </div>
                         </div>
                     </div>
+                    
                     <!-- Students Visitors -->
                     <div class="col-md-12">
                         <div class="card">
@@ -274,22 +308,43 @@ check_login();
                             </div>
                         </div>
                     </div>
-                    
+
+
+                    <!-- *************************************************************** -->
                     <!-- End First Cards -->
-                    
+                    <!-- *************************************************************** -->
+
+
+
+
+
                 </div>
+                <!-- ============================================================== -->
                 <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
                 <!-- footer -->
+                <!-- ============================================================== -->
                 <?php include '../includes/footer.php' ?>
+                <!-- ============================================================== -->
                 <!-- End footer -->
+                <!-- ============================================================== -->
             </div>
+            <!-- ============================================================== -->
             <!-- End Page wrapper  -->
+            <!-- ============================================================== -->
         </div>
+        <!-- ============================================================== -->
         <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
         <!-- All Jquery -->
+        <!-- ============================================================== -->
         <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
         <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
         <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- apps -->
         <!-- apps -->
         <script src="../dist/js/app-style-switcher.js"></script>
         <script src="../dist/js/feather.min.js"></script>

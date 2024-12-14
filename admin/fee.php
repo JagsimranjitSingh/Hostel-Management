@@ -25,6 +25,7 @@
             echo "<script>window.location.href ='fee.php'</script>";
         }
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -45,29 +46,42 @@
     <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
+
     <script>
     function getSeater(val) {
-    }
+       
+        }
     </script>
     
 </head>
 
 <body>
-    <!-- Preloader - style from spinners.css -->
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- Main wrapper - style from pages.scss -->
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
     <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
-        <!-- Topbar header - style from pages.scss -->
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
         <header class="topbar" data-navbarbg="skin6">
             <?php include 'includes/navigation.php'?>
         </header>
-        <!-- Left Sidebar - style from sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
@@ -75,10 +89,16 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        <!-- End Left Sidebar - style from sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
         <!-- Page wrapper  -->
+        <!-- ============================================================== -->
         <div class="page-wrapper">
+            <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
@@ -89,12 +109,22 @@
                             </nav> -->
                         </div>
                     </div>
+                    
                 </div>
             </div>
+            <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
             <div class="container-fluid">
+
             <form method="POST">
+
+
                 <div class="row">
+                    
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="card">
                             <div class="card-body">
@@ -102,6 +132,7 @@
                                     <div class="form-group">
                                         <input type="text" name="fee" id="stayf" class="form-control" required>
                                     </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -115,6 +146,7 @@
                                             <option value="Mess">Mess</option>
                                         </select>
                                     </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -125,30 +157,53 @@
                                     <div class="form-group">
                                         <input type="date" name="due" id="stayf" class="form-control" required>
                                     </div>
+                                
                             </div>
                         </div>
                     </div>
+
+                
                 </div>                           
                     <div class="form-actions">
                         <div class="text-center">
                             <button type="submit" name="submit" class="btn btn-success">Generate</button>
                         </div>
+                    
                     <!-- Table to show that student in out activity -->
                     <!-- buttons in front of each row to delete the record -->
+
+                    
+                    
                 </div>
                 </form>
-            </div>            
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
             <!-- footer -->
+            <!-- ============================================================== -->
             <?php include '../includes/footer.php' ?>
+            <!-- ============================================================== -->
             <!-- End footer -->
+            <!-- ============================================================== -->
         </div>
+        <!-- ============================================================== -->
         <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
     </div>
+    <!-- ============================================================== -->
     <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
     <!-- All Jquery -->
+    <!-- ============================================================== -->
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
     <!-- apps -->
     <script src="../dist/js/app-style-switcher.js"></script>
     <script src="../dist/js/feather.min.js"></script>
@@ -162,13 +217,14 @@
     <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
+
     <!-- Custom Ft. Script Lines -->
 <script type="text/javascript">
 	$(document).ready(function(){
         
     });
     </script>
-
+    
     <script>
         function checkAvailability() {
         $("#loaderIcon").show();
@@ -176,7 +232,9 @@
         }
     </script>
 
+
     <script type="text/javascript">
+
     $(document).ready(function() {
         $('#duration').keyup(function(){
             

@@ -18,10 +18,10 @@
                 <!--End Logo icon -->
                 <!-- Logo text -->
                 <span class="logo-text">
+                    <img src="" class="light-logo" alt="" />
                     <!-- dark Logo text -->
                     <img src="../assets/images/textnav.png" alt="homepage" class="dark-logo" />
                     <!-- Light Logo text -->
-                    <!-- <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> -->
                 </span>
             </a>
         </div>
@@ -45,12 +45,12 @@
         <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
 
             <!-- ============================================================== -->
-            <!-- DateTime-->
+            <!-- create a digital clock along with date in the navbar-->
             <!-- ============================================================== -->
             <li class="nav-item d-none d-md-block">
                 <a class="nav-link" href="javascript:void(0)">
                     <div id="clock"
-                        style="font-family: Raleway,Rubik,sans-serif; font-size:15px; font-weight:500; text-shadow:0px 0px 1px #fff; color:#212529;">
+                        style="font-family: Raleway,Rubik,sans-serif;font-size:15px;font-weight:500;text-shadow:0px 0px 1px #fff;color:#212529;">
                     </div>
 
                 </a>
@@ -58,11 +58,15 @@
             <li class="nav-item d-none d-md-block">
                 <a class="nav-link" href="javascript:void(0)">
                     <div id="date"
-                        style=" letter-spacing:3px; font-size:15px; font-weight:500; font-family:Raleway,Rubik,sans-serif; color:#212529;">
+                        style=" letter-spacing:3px;font-size:15px;font-weight:500;font-family:Raleway,Rubik,sans-serif;color:#212529;">
                     </div>
 
                 </a>
             </li>
+            <!-- ============================================================== -->
+            <!-- End create a digital clock along with date in the navbar-->
+            <!-- ============================================================== -->
+
 
         </ul>
         <!-- ============================================================== -->
@@ -76,19 +80,21 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <img src="../assets/images/users/admin-icn.png" alt="user" class="rounded-circle" width="35">
+                    <img src="../assets/images/users/user-icn.png" alt="user" class="rounded-circle" width="40">
 
                     <?php
-                    $mid = $_SESSION['mid'];
-                    $ret = "SELECT * from manager where MID='$mid'";
+                    $login = $_SESSION['login'];
+                    $ret = "SELECT * FROM  student WHERE SEmail = ? ";
+
                     $stmt = $mysqli->prepare($ret);
+                    $stmt->bind_param('s', $login);
                     $stmt->execute();
                     $res = $stmt->get_result();
 
                     while ($row = $res->fetch_object()) {
                     ?>
 
-                    <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark"><?php echo $row->MName;
+                    <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark"><?php echo $row->SName;
                     } ?></span> <i data-feather="chevron-down" class="svg-icon"></i></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">

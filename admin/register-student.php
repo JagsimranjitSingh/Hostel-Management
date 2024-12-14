@@ -46,6 +46,7 @@ if (isset($_POST['submit'])) {
     <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
+
     <script type="text/javascript">
         function valid() {
             if (document.registration.password.value != document.registration.cpassword.value) {
@@ -56,25 +57,36 @@ if (isset($_POST['submit'])) {
             return true;
         }
     </script>
+
 </head>
 
 <body style="font-family: Raleway;">
-    <!-- Preloader - style from spinners.css -->
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- Main wrapper - style from pages.scss -->
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
     <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
-        <!-- Topbar header - style from pages.scss -->
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
         <header class="topbar" data-navbarbg="skin6">
             <?php include 'includes/navigation.php' ?>
         </header>
+        <!-- ============================================================== -->
         <!-- End Topbar header -->
-        <!-- Left Sidebar - style from sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
@@ -82,14 +94,21 @@ if (isset($_POST['submit'])) {
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        <!-- End Left Sidebar - style from sidebar.scss  -->        
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
         <!-- Page wrapper  -->
+        <!-- ============================================================== -->
         <div class="page-wrapper">
+            <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Student Registration Form</h4>
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Student Registration Form
+                        </h4>
                         <div class="d-flex align-items-center">
                             <!-- <nav aria-label="breadcrumb">
                                 
@@ -99,10 +118,19 @@ if (isset($_POST['submit'])) {
 
                 </div>
             </div>
-            <!-- End Bread crumb and right sidebar toggle -->            
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
             <div class="container-fluid">
+
                 <form method="POST" name="registration" onSubmit="return valid();">
+
                     <div class="row">
+
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -111,9 +139,13 @@ if (isset($_POST['submit'])) {
                                         <input type="number" name="cms" placeholder="Enter Registration Number"
                                             id="regno" class="form-control" required>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
+
+
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -125,6 +157,8 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -136,6 +170,8 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -147,6 +183,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -158,6 +195,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -174,6 +212,8 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -185,6 +225,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -196,6 +237,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -220,6 +262,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -232,6 +275,8 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -243,6 +288,8 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -255,25 +302,49 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+
+
+
                     </div>
+
+
                     <div class="form-actions">
                         <div class="text-center">
                             <button type="submit" name="submit" class="btn btn-success">Register</button>
                             <button type="reset" class="btn btn-danger">Reset</button>
                         </div>
                     </div>
+
                 </form>
+
+
             </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
             <!-- footer -->
+            <!-- ============================================================== -->
             <?php include '../includes/footer.php' ?>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
         </div>
+        <!-- ============================================================== -->
         <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
     </div>
+    <!-- ============================================================== -->
     <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
     <!-- All Jquery -->
+    <!-- ============================================================== -->
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
     <!-- apps -->
     <script src="../dist/js/app-style-switcher.js"></script>
     <script src="../dist/js/feather.min.js"></script>
@@ -287,10 +358,13 @@ if (isset($_POST['submit'])) {
     <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
+
     <!-- customs -->
     <script>
         function checkAvailability() {
+
             $("#loaderIcon").show();
+
         }
     </script>
 </body>

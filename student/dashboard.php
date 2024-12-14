@@ -1,20 +1,8 @@
 <?php
-session_start();
-include('../includes/dbconn.php');
-include('../includes/check-login.php');
-check_login();
-if (isset($_POST['submit'])) {
-    $date = $_POST['date'];
-    $status = "Not Received";
-    $type = $_POST['type'];
-    $cms = $_POST['cms'];
-    $sql = mysqli_query($mysqli, "INSERT INTO parcel(pdate, pstatus, ptype, cms) VALUES('$date', '$status', '$type', $cms)");
-    if ($sql) {
-        echo "<script>alert('Parcel added successfully');</script>";
-    } else {
-        echo "<script>alert('Something went wrong. Please try again');</script>";
-    }
-}
+    session_start();
+    include('../includes/dbconn.php');
+    include('../includes/check-login.php');
+    check_login();
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +13,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+     
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
@@ -33,14 +22,12 @@ if (isset($_POST['submit'])) {
     <!-- Custom CSS -->
     <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <!-- This page plugin CSS -->
-    <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
-
+    
 </head>
 
-<body>
+<body style="font-family: Raleway;">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -59,7 +46,7 @@ if (isset($_POST['submit'])) {
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <header class="topbar" data-navbarbg="skin6">
-            <?php include 'includes/navigation.php' ?>
+            <?php include '../includes/student-navigation.php'?>
         </header>
         <!-- ============================================================== -->
         <!-- End Topbar header -->
@@ -70,7 +57,7 @@ if (isset($_POST['submit'])) {
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
-                <?php include 'includes/sidebar.php' ?>
+                <?php include '../includes/student-sidebar.php'?>
             </div>
             <!-- End Sidebar scroll-->
         </aside>
@@ -87,17 +74,16 @@ if (isset($_POST['submit'])) {
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Parcel Management</h4>
+                       <?php include '../includes/greetings.php'?>
                         <div class="d-flex align-items-center">
                             <!-- <nav aria-label="breadcrumb">
                                 
                             </nav> -->
-
                         </div>
                     </div>
-
+                    
                 </div>
-
+                 
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
@@ -106,62 +92,75 @@ if (isset($_POST['submit'])) {
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-
-                <!-- Table Starts -->
-                <form method="POST">
-
-
-                    <div class="row">
-
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">CMS</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="cms" id="stayf" class="form-control" required>
-                                    </div>
-
+                <!-- Column to Show student attendence  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">My Attendence</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                $cms = $_SESSION['cms'];
+                                                $ret=mysqli_query($mysqli,"select * from student_attendance where cms=$cms");
+                                                $cnt=1;
+                                                while ($row=mysqli_fetch_array($ret)) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $row['SADate'];?></td>
+                                                <td><?php echo $row['Status'];?></td>
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Type</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="type" id="stayf" class="form-control" required>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Date</h4>
-                                    <div class="form-group">
-                                        <input type="date" name="date" id="stayf" class="form-control" required>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
                     </div>
-                    <div class="form-actions">
-                        <div class="text-center">
-                            <button type="submit" name="submit" class="btn btn-success">Generate</button>
+                </div>
+                <!-- Column to show Weekly Menu of mess -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Weekly Mess Menu</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Day</th>
+                                                <th scope="col">Breakfast</th>
+                                                <th scope="col">Lunch</th>
+                                                <th scope="col">Dinner</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                $row1 = mysqli_query($mysqli,"select * from menu");
+                                                while ($row=mysqli_fetch_array($row1)) {
+                                            ?>
+                                            <tr>
+                                                <td><b><?php echo $row['Day'];?></b></td>
+                                                <td><?php echo $row['BREAKFAST'];?></td>
+                                                <td><?php echo $row['LUNCH'];?></td>
+                                                <td><?php echo $row['DINNER'];?></td>
+                                            </tr>
+                                            <?php } ?>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-
-                        <!-- Table to show that student in out activity -->
-                        <!-- buttons in front of each row to delete the record -->
-
-
-
                     </div>
-                </form>
+                </div>
             </div>
+
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -189,6 +188,7 @@ if (isset($_POST['submit'])) {
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- apps -->
     <!-- apps -->
+     
     <script src="../dist/js/app-style-switcher.js"></script>
     <script src="../dist/js/feather.min.js"></script>
     <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
@@ -201,9 +201,6 @@ if (isset($_POST['submit'])) {
     <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
-    <script src="../assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../dist/js/pages/datatable/datatable-basic.init.js"></script>
-
 </body>
 
 </html>
