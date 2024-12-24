@@ -187,9 +187,9 @@ if (isset($_POST['submit'])) {
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">CNIC</h4>
+                                    <h4 class="card-title">Aadhaar No</h4>
                                     <div class="form-group">
-                                        <input type="text" name="cnic" id="lname" placeholder="Enter CNIC" required
+                                        <input type="text" name="cnic" id="lname" placeholder="Enter Aadhaar No" required
                                             class="form-control">
                                     </div>
                                 </div>

@@ -139,7 +139,7 @@
                                             </tr>
 
                                             <tr>
-                                            <td><b>CNIC :</b></td>
+                                            <td><b>Aadhaar No :</b></td>
                                             <td><?php echo $row->SCnic;?></td>
                                             <td><b>Gender :</b></td>
                                             <td><?php echo $row->SGender;?></td>

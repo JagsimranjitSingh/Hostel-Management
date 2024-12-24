@@ -121,7 +121,7 @@
                                             <th>Name</th>
                                             <th>Relation</th>
                                             <th>Gender</th>
-                                            <th>Cnic</th>
+                                            <th>Aadhaar No</th>
                                             <th>Date</th>
                                             <th>Reason</th>
                                         </tr>
@@ -254,7 +254,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">CNIC</h4>
+                                <h4 class="card-title">Aadhaar No</h4>
                                 <div class="form-group">
                                         <input type="text" name="cnic" id="stayf" class="form-control" required>
                                     </div>
