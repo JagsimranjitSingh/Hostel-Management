@@ -131,7 +131,7 @@
                                 <h4 class="card-title">Date</h4>
                                     <div class="form-group">
                                         <!-- fill today date using php -->
-                                        <input type="date" name="date" id="stayf" class="form-control" value="<?php echo date('Y-m-d')?>" required>
+                                        <input type="date" name="date" id="stayf" class="form-control" value="<?php echo date('Y-m-d')?>" required readonly>
                                     </div>
                                 
                             </div>
