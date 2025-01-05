@@ -189,7 +189,7 @@ if (isset($_POST['submit'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Aadhaar No</h4>
                                     <div class="form-group">
-                                        <input type="text" name="cnic" id="lname" placeholder="Enter Aadhaar No" required
+                                        <input type="number" name="cnic" id="lname" placeholder="Enter Aadhaar No" required
                                             class="form-control">
                                     </div>
                                 </div>
@@ -219,7 +219,7 @@ if (isset($_POST['submit'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Contact Number</h4>
                                     <div class="form-group">
-                                        <input type="text" name="phone" id="contact" placeholder="Your Contact"
+                                        <input type="number" name="phone" id="contact" placeholder="Your Contact"
                                             required="required" class="form-control">
                                     </div>
                                 </div>
